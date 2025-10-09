@@ -1,8 +1,9 @@
 resource "azurerm_resource_group" "this" {
-    name     = "dom-web-app-API-test-rg"
-    location = "westeurope"
+    name     = var.name
+    location = var.location
 
     tags = {
         Project = "ResumeSite"         
   }
 }
+
