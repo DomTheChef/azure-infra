@@ -10,3 +10,6 @@ module "resource_group_web_app" {
   location = var.location
 }
 
+module "app_service_plan_api" {
+  
+}
