@@ -9,3 +9,4 @@ module "resource_group_web_app" {
   name     = "dom-web-app-test-rg"
   location = var.location
 }
+

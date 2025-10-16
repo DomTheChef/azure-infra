@@ -1,6 +1,6 @@
 module "resource_group_api" {
   source   = "../../modules/resource_group"
-  name     = "dom-web-app-api-rg"
+  name     = "dom-web-app-API-rg"
   location = var.location
 }
 
