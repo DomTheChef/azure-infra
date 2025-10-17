@@ -11,5 +11,10 @@ module "resource_group_web_app" {
 }
 
 module "app_service_plan_api" {
-  
+  source              = "../../modules/app_service_plan"
+  name                = "ASP-domwebappAPItestrg-a4a1"
+  location            = var.location
+  resource_group_name = module.resource_group_api.name
+  tier                = "Dynamic"
+  size                = "Y1"
 }

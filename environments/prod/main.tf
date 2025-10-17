@@ -9,3 +9,12 @@ module "resource_group_web_app" {
   name     = "dom-web-app-rg"
   location = var.location
 }
+
+module "app_service_plan_api" {
+  source              = "../../modules/app_service_plan"
+  name                = "ASP-domwebappAPIrg-95f4"         
+  location            = var.location
+  resource_group_name = module.resource_group_api.name
+  tier                = "Dynamic"
+  size                = "Y1"
+}
