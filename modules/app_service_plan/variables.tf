@@ -1,6 +1,6 @@
 variable "name" {
     type        = string
-    description = "Name of the app service plan group"
+    description = "Name of the app service plan"
 }
 
 variable "location" {

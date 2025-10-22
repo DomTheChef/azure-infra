@@ -18,3 +18,13 @@ module "app_service_plan_api" {
   tier                = "Dynamic"
   size                = "Y1"
 }
+
+module "storage_accounts" {
+  source              = "../../modules/storage_account"
+  name                = "domwebappapirg8ec1"         
+  location            = var.location
+  resource_group_name = module.resource_group_api.name
+  replication_type    = "LRS"
+  account_tier        = "Standard"
+  account_kind        = "StorageV1"
+}
