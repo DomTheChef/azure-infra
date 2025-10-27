@@ -36,4 +36,9 @@ module "application_insights" {
   resource_group_name = module.resource_group_api.name
 }
 
-
+module "cosmos_db" {
+  source = "../../modules/cosmos_db"
+  name                = "dom-app-cosmos-test"                  
+  location            = var.location                            
+  resource_group_name = module.resource_group_api.name           
+}
