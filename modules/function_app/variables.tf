@@ -33,11 +33,6 @@ variable "storage_connection_string" {
   description = "Connection string for the Function App's Storage Account"
 }
 
-variable "identity_id" {
-  type        = string
-  description = "User Assigned Managed Identity ID"
-}
-
 variable "app_insights_key" {
   type        = string
   description = "Instrumentation key for Application Insights"

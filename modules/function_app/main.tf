@@ -8,11 +8,6 @@ resource "azurerm_linux_function_app" "this" {
     storage_account_access_key = var.storage_account_access_key
     https_only = true
 
-  identity {
-    type         = "UserAssigned"
-    identity_ids = [var.identity_id]
-  }
-
 site_config {
   ftps_state          = "Disabled"       
   minimum_tls_version = "1.2"               
