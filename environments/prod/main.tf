@@ -28,3 +28,10 @@ module "storage_accounts" {
   account_tier        = "Standard"
   account_kind        = "StorageV1"
 }
+
+module "application_insights" {
+  source              = "../../modules/application_insights"
+  name                = "dom-prod-fnapp-insights"
+  location            = var.location
+  resource_group_name = module.resource_group_api.name
+}

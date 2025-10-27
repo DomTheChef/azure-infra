@@ -23,11 +23,8 @@ site_config {
     "AzureWebJobsStorage"         = var.storage_connection_string
     "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING" = var.storage_connection_string
     "WEBSITE_CONTENTSHARE"        = "${var.name}-content"
-
     "APPINSIGHTS_INSTRUMENTATIONKEY" = var.app_insights_key
-
     "CosmosConn" = var.cosmos_connection_string   
-
     "AzureWebJobsFeatureFlags" = "EnableWorkerIndexing"
   }
   
