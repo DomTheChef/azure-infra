@@ -26,7 +26,7 @@ module "storage_accounts" {
   resource_group_name = module.resource_group_api.name
   replication_type    = "LRS"
   account_tier        = "Standard"
-  account_kind        = "StorageV1"
+  account_kind        = "StorageV2"
 }
 
 module "application_insights" {

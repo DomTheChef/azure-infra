@@ -22,3 +22,4 @@ resource "azurerm_cosmosdb_account" "this" {
     Project = "ResumeSite"
   }
 }
+
