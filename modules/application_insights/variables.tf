@@ -12,3 +12,8 @@ variable "resource_group_name" {
   type        = string
   description = "Resource group name where App Insights exists"
 }
+
+variable "workspace_id" {
+  description = "The Log Analytics workspace ID for Application Insights"
+  type        = string
+}

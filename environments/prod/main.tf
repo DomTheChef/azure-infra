@@ -34,6 +34,8 @@ module "application_insights" {
   name                = "dom-prod-fnapp-insights"
   location            = var.location
   resource_group_name = module.resource_group_api.name
+  workspace_id        = var.workspace_id
+
 }
 
 module "cosmos_db" {
