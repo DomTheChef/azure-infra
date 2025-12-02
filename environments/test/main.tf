@@ -63,8 +63,3 @@ resource "azurerm_role_assignment" "fnapp_to_storage_blob_test" {
   principal_id         = module.function_app_api.principal_id
 }
 
-resource "azurerm_role_assignment" "fnapp_to_cosmos_test" {
-  scope                = module.cosmos_db.id
-  role_definition_name = "Cosmos DB Built-in Data Contributor"
-  principal_id         = module.function_app_api.principal_id
-}
