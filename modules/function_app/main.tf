@@ -28,7 +28,7 @@ resource "azurerm_linux_function_app" "this" {
     "APPINSIGHTS_INSTRUMENTATIONKEY"           = var.app_insights_key
     "AzureWebJobsFeatureFlags"                 = "EnableWorkerIndexing"
     "STORAGE_ACCOUNT_URL"                      = "https://${var.storage_account_name}.blob.core.windows.net"
-    "CosmosConn"                               = var.cosmos_connection_string
+    "COSMOS_ENDPOINT"                          = var.cosmos_endpoint
   }
 
   tags = {

@@ -39,7 +39,7 @@ variable "app_insights_key" {
   default     = null
 }
 
-variable "cosmos_connection_string" {
+variable "cosmos_endpoint" {
   type        = string
-  description = "CosmosDB connection string used by function app"
+  description = "Cosmos DB endpoint URL"
 }

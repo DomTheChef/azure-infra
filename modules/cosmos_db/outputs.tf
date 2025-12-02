@@ -6,7 +6,7 @@ output "id" {
   value = azurerm_cosmosdb_account.this.id
 }
 
-output "primary_connection_string" {
-  value     = azurerm_cosmosdb_account.this.connection_strings[0]
-  sensitive = true
+output "endpoint" {
+  value       = azurerm_cosmosdb_account.this.endpoint
+  description = "Cosmos DB endpoint URL"
 }

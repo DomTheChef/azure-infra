@@ -52,13 +52,19 @@ module "function_app_api" {
   app_service_plan_id        = module.app_service_plan_api.id
   storage_account_name       = module.storage_accounts.name
   storage_account_access_key = module.storage_accounts.primary_access_key
-  app_insights_key           = module.application_insights.key
-  cosmos_connection_string   = module.cosmos_db.primary_connection_string
   storage_connection_string  = module.storage_accounts.primary_connection_string
+  app_insights_key           = module.application_insights.key
+  cosmos_endpoint            = module.cosmos_db.endpoint
 }
 
 resource "azurerm_role_assignment" "fnapp_to_storage_blob_test" {
   scope                = module.storage_accounts.id
   role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = module.function_app_api.principal_id
+}
+
+resource "azurerm_role_assignment" "fnapp_to_cosmos_test" {
+  scope                = module.cosmos_db.id
+  role_definition_name = "Cosmos DB Built-in Data Contributor"
   principal_id         = module.function_app_api.principal_id
 }
