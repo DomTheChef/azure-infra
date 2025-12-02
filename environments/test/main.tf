@@ -27,7 +27,6 @@ module "storage_accounts" {
   replication_type    = "LRS"
   account_tier        = "Standard"
   account_kind        = "StorageV2"
-  # consumer_principal_id = module.function_app_api.principal_id
 }
 
 module "application_insights" {
@@ -43,7 +42,6 @@ module "cosmos_db" {
   name                = "dom-app-cosmos-test"
   location            = var.location
   resource_group_name = module.resource_group_api.name
-  # consumer_principal_id = module.function_app_api.principal_id
 }
 
 module "function_app_api" {
@@ -57,4 +55,10 @@ module "function_app_api" {
   app_insights_key           = module.application_insights.key
   cosmos_connection_string   = module.cosmos_db.primary_connection_string
   storage_connection_string  = module.storage_accounts.primary_connection_string
+}
+
+resource "azurerm_role_assignment" "fnapp_to_storage_blob_test" {
+  scope                = module.storage_accounts.id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = module.function_app_api.principal_id
 }
