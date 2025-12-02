@@ -1,11 +1,11 @@
 variable "name" {
-    type        = string
-    description = "Name of the storage account"
+  type        = string
+  description = "Name of the storage account"
 }
 
 variable "location" {
-    type        = string
-    description = "Azure region for the storage account"
+  type        = string
+  description = "Azure region for the storage account"
 }
 
 variable "resource_group_name" {
@@ -24,6 +24,12 @@ variable "replication_type" {
 }
 
 variable "account_kind" {
-    type = string
-    description = "Type of account (e.g. StorageV1 or V2)"
+  type        = string
+  description = "Type of account (e.g. StorageV1 or V2)"
+}
+
+variable "consumer_principal_id" {
+  type        = string
+  description = "Principal ID that should get blob data access to this storage account"
+  default     = null
 }

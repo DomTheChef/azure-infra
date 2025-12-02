@@ -21,12 +21,13 @@ module "app_service_plan_api" {
 
 module "storage_accounts" {
   source              = "../../modules/storage_account"
-  name                = "domwebappapitestrga3d8"         
+  name                = "domwebappapitestrga3d8"
   location            = var.location
   resource_group_name = module.resource_group_api.name
   replication_type    = "LRS"
   account_tier        = "Standard"
   account_kind        = "StorageV2"
+  # consumer_principal_id = module.function_app_api.principal_id
 }
 
 module "application_insights" {
@@ -35,25 +36,25 @@ module "application_insights" {
   location            = var.location
   resource_group_name = module.resource_group_api.name
   workspace_id        = var.workspace_id
-
 }
 
 module "cosmos_db" {
-  source = "../../modules/cosmos_db"
-  name                = "dom-app-cosmos-test"                  
-  location            = var.location                            
-  resource_group_name = module.resource_group_api.name           
+  source              = "../../modules/cosmos_db"
+  name                = "dom-app-cosmos-test"
+  location            = var.location
+  resource_group_name = module.resource_group_api.name
+  # consumer_principal_id = module.function_app_api.principal_id
 }
 
 module "function_app_api" {
-  source = "../../modules/function_app"
-  name = "dom-test-fnapp"
-  location = var.location
-  resource_group_name = module.resource_group_api.name
-  app_service_plan_id = module.app_service_plan_api.id
-  storage_account_name = module.storage_accounts.name
+  source                     = "../../modules/function_app"
+  name                       = "dom-test-fnapp"
+  location                   = var.location
+  resource_group_name        = module.resource_group_api.name
+  app_service_plan_id        = module.app_service_plan_api.id
+  storage_account_name       = module.storage_accounts.name
   storage_account_access_key = module.storage_accounts.primary_access_key
-  app_insights_key = module.application_insights.key
-  cosmos_connection_string = module.cosmos_db.primary_connection_string
-  storage_connection_string = module.storage_accounts.primary_connection_string
+  app_insights_key           = module.application_insights.key
+  cosmos_connection_string   = module.cosmos_db.primary_connection_string
+  storage_connection_string  = module.storage_accounts.primary_connection_string
 }

@@ -23,3 +23,9 @@ resource "azurerm_cosmosdb_account" "this" {
   }
 }
 
+resource "azurerm_role_assignment" "consumer_cosmos_contributor" {
+  count                = var.consumer_principal_id == null ? 0 : 1
+  scope                = azurerm_cosmosdb_account.this.id
+  role_definition_name = "Cosmos DB Built-in Data Contributor"
+  principal_id         = var.consumer_principal_id
+}

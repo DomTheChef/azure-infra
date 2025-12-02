@@ -1,9 +1,9 @@
 output "name" {
-    value = azurerm_storage_account.this.name
+  value = azurerm_storage_account.this.name
 }
 
 output "id" {
-    value = azurerm_storage_account.this.id
+  value = azurerm_storage_account.this.id
 }
 
 output "primary_connection_string" {

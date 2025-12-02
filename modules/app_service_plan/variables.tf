@@ -1,11 +1,11 @@
 variable "name" {
-    type        = string
-    description = "Name of the app service plan"
+  type        = string
+  description = "Name of the app service plan"
 }
 
 variable "location" {
-    type        = string
-    description = "Azure region for the app service plan"
+  type        = string
+  description = "Azure region for the app service plan"
 }
 
 variable "resource_group_name" {

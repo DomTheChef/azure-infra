@@ -8,6 +8,10 @@ resource "azurerm_linux_function_app" "this" {
   storage_account_access_key = var.storage_account_access_key
   https_only                 = true
 
+  identity {
+    type = "SystemAssigned"
+  }
+
   site_config {
     application_stack {
       python_version = "3.11"
@@ -21,8 +25,9 @@ resource "azurerm_linux_function_app" "this" {
     "FUNCTIONS_WORKER_RUNTIME"                 = "python"
     "AzureWebJobsStorage"                      = var.storage_connection_string
     "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING" = var.storage_connection_string
-    "APPINSIGHTS_INSTRUMENTATIONKEY"          = var.app_insights_key
+    "APPINSIGHTS_INSTRUMENTATIONKEY"           = var.app_insights_key
     "AzureWebJobsFeatureFlags"                 = "EnableWorkerIndexing"
+    "STORAGE_ACCOUNT_URL"                      = "https://${var.storage_account_name}.blob.core.windows.net"
     "CosmosConn"                               = var.cosmos_connection_string
   }
 

@@ -12,3 +12,9 @@ variable "resource_group_name" {
   type        = string
   description = "Name of the Resource Group"
 }
+
+variable "consumer_principal_id" {
+  type        = string
+  description = "Principal ID allowed to access this Cosmos DB account"
+  default     = null
+}
