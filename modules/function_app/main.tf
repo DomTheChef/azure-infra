@@ -17,6 +17,11 @@ resource "azurerm_linux_function_app" "this" {
       python_version = "3.11"
     }
 
+    cors {
+      allowed_origins = var.cors_allowed_origins
+      support_credentials = false
+    }
+
     ftps_state = "Disabled"
   }
 

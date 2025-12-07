@@ -43,3 +43,9 @@ variable "cosmos_endpoint" {
   type        = string
   description = "Cosmos DB endpoint URL"
 }
+
+variable "cors_allowed_origins" {
+  type        = list(string)
+  description = "Allowed CORS origins for Function App"
+  default     = []
+}

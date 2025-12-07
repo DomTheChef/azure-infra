@@ -55,6 +55,10 @@ module "function_app_api" {
   storage_connection_string  = module.storage_accounts.primary_connection_string
   app_insights_key           = module.application_insights.key
   cosmos_endpoint            = module.cosmos_db.endpoint
+
+  cors_allowed_origins = [
+    "http://localhost:3000",
+  ]
 }
 
 resource "azurerm_role_assignment" "fnapp_to_storage_blob_test" {
@@ -63,3 +67,10 @@ resource "azurerm_role_assignment" "fnapp_to_storage_blob_test" {
   principal_id         = module.function_app_api.principal_id
 }
 
+resource "azurerm_cosmosdb_sql_role_assignment" "fnapp_cosmos_data_contributor_test" {
+  resource_group_name = module.resource_group_api.name
+  account_name        = module.cosmos_db.name
+  role_definition_id  = "${module.cosmos_db.id}/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002"
+  principal_id        = module.function_app_api.principal_id
+  scope               = module.cosmos_db.id
+}
