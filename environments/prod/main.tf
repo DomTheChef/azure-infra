@@ -45,6 +45,18 @@ module "cosmos_db" {
   resource_group_name = module.resource_group_api.name
 }
 
+module "storage_account_website" {
+  source              = "../../modules/storage_account_website"
+  name                = "domsenawebprod01"
+  location            = var.location
+  resource_group_name = module.resource_group_web_app.name
+
+  tags = {
+    Project = "ResumeSite"
+  }
+}
+
+
 module "function_app_api" {
   source                     = "../../modules/function_app"
   name                       = "dom-prod-fnapp"
